@@ -25,8 +25,12 @@ ruleTester.run("no-url-params-template", rule, {
   valid: [
     { code: "url = new URLSearchParams({ city: 'Rome', time: 'now' }).toString()" },
     { code: "url = 'path?' + new URLSearchParams({ city: 'Rome', time: 'now' }).toString()" },
+    { code: "url = 'path?${new URLSearchParams({ city: 'Rome', time: 'now' }).toString()}`" },
     {
       code: "url = 'https://example.com/path?' + new URLSearchParams({ city: 'Rome', time: 'now' }).toString()",
+    },
+    {
+      code: "url = 'https://example.com/path?${new URLSearchParams({ city: 'Rome', time: 'now' }).toString()}`",
     },
     { code: "$(`.tab[id=${tab}]`)" },
   ],

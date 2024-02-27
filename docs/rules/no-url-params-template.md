@@ -13,7 +13,7 @@ const url = `path?city=${city}&time=${now}`;
 Instead, they should use:
 
 ```js
-const url = `path?` + new URLSearchParams({ city, time: now }).toString();
+const url = `path?${new URLSearchParams({ city, time: now }).toString()}`;
 ```
 
 This offers:
@@ -30,7 +30,7 @@ This rule reports an error if any template literal has one or more elements of t
 Examples of **incorrect** code for this rule:
 
 ```js
-const url = `city=${city}&time=${now}`;
+const url = `?city=${city}&time=${now}`;
 const url = `path?city=${city}&time=${now}`;
 const url = `https://example.com/path?city=${city}&time=${now}#fragment`;
 ```
@@ -39,8 +39,8 @@ Examples of **correct** code for this rule:
 
 ```js
 const url = new URLSearchParams({ city, time: now }).toString();
-const url = `path?` + new URLSearchParams({ city, time: now }).toString();
-const url = `https://example.com/path?` + new URLSearchParams({ city, time: now }).toString();
+const url = `path?${new URLSearchParams({ city, time: now }).toString()}`;
+const url = `https://example.com/path?${new URLSearchParams({ city, time: now }).toString()}`;
 ```
 
 ## When Not To Use It
