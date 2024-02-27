@@ -28,11 +28,12 @@ ruleTester.run("no-url-params-template", rule, {
     {
       code: "url = 'https://example.com/path?' + new URLSearchParams({ city: 'Rome', time: 'now' }).toString()",
     },
+    { code: "$(`.tab[id=${tab}]`)" },
   ],
 
   invalid: [
     {
-      code: "city = 'Rome'; url = `city=${city}`",
+      code: "city = 'Rome'; url = `?city=${city}`",
       errors: [{ message: "URL constructed with template literal", type: "TemplateLiteral" }],
     },
     {
@@ -44,7 +45,7 @@ ruleTester.run("no-url-params-template", rule, {
       errors: [{ message: "URL constructed with template literal", type: "TemplateLiteral" }],
     },
     {
-      code: "url = `city=${city == valid && 'all' ? country : city}&date=${today}`",
+      code: "url = `?city=${city == valid && 'all' ? country : city}&date=${today}`",
       errors: [{ message: "URL constructed with template literal", type: "TemplateLiteral" }],
     },
   ],
