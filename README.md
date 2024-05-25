@@ -22,20 +22,17 @@ Add `no-url-params-template` to the plugins section of your `.eslintrc` configur
 
 ```json
 {
-    "plugins": [
-        "no-url-params-template"
-    ]
+  "plugins": ["no-url-params-template"]
 }
 ```
-
 
 Then configure the rules you want to use under the rules section.
 
 ```json
 {
-    "rules": {
-        "no-url-params-template/rule-name": 2
-    }
+  "rules": {
+    "no-url-params-template/rule-name": 2
+  }
 }
 ```
 

@@ -24,15 +24,18 @@ const ruleTester = new RuleTester({
 ruleTester.run("no-url-params-template", rule, {
   valid: [
     { code: "url = new URLSearchParams({ city: 'Rome', time: 'now' }).toString()" },
-    { code: "url = 'path?' + new URLSearchParams({ city: 'Rome', time: 'now' }).toString()" },
-    { code: "url = 'path?${new URLSearchParams({ city: 'Rome', time: 'now' }).toString()}`" },
+    { code: "url = 'path?' + new URLSearchParams({ city: 'Rome', time: 'now' })" },
+    { code: "url = `path?${new URLSearchParams({ city: 'Rome', time: 'now' })}`" },
     {
-      code: "url = 'https://example.com/path?' + new URLSearchParams({ city: 'Rome', time: 'now' }).toString()",
+      code: "url = 'https://example.com/path?' + new URLSearchParams({ city: 'Rome', time: 'now' })",
     },
     {
-      code: "url = 'https://example.com/path?${new URLSearchParams({ city: 'Rome', time: 'now' }).toString()}`",
+      code: "url = `https://example.com/path?${new URLSearchParams({ city: 'Rome', time: 'now' })}`",
     },
     { code: "$(`.tab[id=${tab}]`)" },
+    {
+      code: "html`<option ?selected=${val == true}>Yes</option>`",
+    },
   ],
 
   invalid: [

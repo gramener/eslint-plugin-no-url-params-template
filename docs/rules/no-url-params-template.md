@@ -22,7 +22,6 @@ This offers:
 - Readability: The syntax is cleaner and more readable. It abstracts away the manual construction of the query string.
 - Error Reduction: Reduces the chance of errors like missing an & or incorrectly encoding values.
 
-
 ## Rule Details
 
 This rule reports an error if any template literal has one or more elements of the form `key=${value}`.
